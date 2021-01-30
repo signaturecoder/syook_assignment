@@ -69,3 +69,36 @@ function deleteNote(noteId) {
     localStorage.setItem("notes", JSON.stringify(notesObj));
     showNoteList();
 }
+
+let searchEle = document.querySelector('.search__box');
+let searchBtn = document.querySelector('.search__btn');
+searchEle.addEventListener('input', () => {
+   let searchItem = searchEle.value.toLowerCase();
+
+   let noteCards = document.getElementsByClassName('note');
+   Array.from(noteCards).forEach((element) => {
+       let noteCardTitle = element.getElementsByClassName('note__description')[0].innerText
+       console.log('noteCArdTitle', noteCardTitle);
+       if(noteCardTitle.includes(searchItem)) {
+           element.style.display = "block";
+       } else {
+        element.style.display = "none";
+           
+       }
+   })
+});
+
+
+function searchNote(searchItem) {
+    if(notesObj.length === 0) {
+        console.log('no item to search');
+    } else {
+        let filteredNotes = notesObj.filter(item => {
+            if(item.noteTitle === searchItem)
+                    return item;
+            else return;
+        });
+        console.log('filtered Notes', filteredNotes);
+    }
+
+}
