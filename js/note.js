@@ -7,6 +7,7 @@ addBtn.addEventListener('click', (e) => {
     let actionDescription = document.getElementById('actions__description')
     // console.log('Actions Title', actionTitle.value);
     // console.log('Actions Description', actionDescription.value);
+  
     let notes = localStorage.getItem("notes");
     if(notes === null) {
          notesObj = [];
@@ -18,10 +19,18 @@ addBtn.addEventListener('click', (e) => {
         noteDescription: actionDescription.value
     }
     console.log("new Note", newNote);
-    notesObj.push(newNote);
-    localStorage.setItem("notes", JSON.stringify(notesObj));
-    actionTitle.value = "";
-    actionDescription.value = "";
+    if(actionTitle.value === "" ) {
+        alert('Title should not be empty');
+    } else if( actionDescription.value === ""){
+        alert('Description should not be empty');
+    } else {
+        notesObj.push(newNote);
+        localStorage.setItem("notes", JSON.stringify(notesObj));
+        actionTitle.value = "";
+        actionDescription.value = "";
+    }
+ 
+    
     showNoteList();
 });
 
@@ -38,10 +47,12 @@ function showNoteList() {
         html += `
         <div class="note">
         <div class="note__title">${element.noteTitle}</div>
+        <div class="note__description__wrapper" >
         <div class="note__description">${element.noteDescription}</div>
         <div class="note__actions">
-          <button class="note__btn note__btn--edit">Edit</button> 
+          <button element="${element.noteTitle}" class="note__btn note__btn--edit" onclick='editNote()'>Edit</button> 
           <button id="${index}" class="note__btn note__btn--delete" onclick="deleteNote(this.id)">Delete</button> 
+        </div>
         </div>
       </div>
         `;
@@ -56,6 +67,20 @@ function showNoteList() {
     }
 }
 
+function expand(index) {
+    console.log('index', index);
+}
+
+// let editBtn = document.querySelector('.note__btn--edit');
+// console.log(editBtn);
+// editBtn.addEventListener('click', () => {
+//     console.log('Edit');
+// })
+
+function editNote() {
+  
+    
+}
 
 function deleteNote(noteId) {
     let notes = localStorage.getItem("notes");
