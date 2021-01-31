@@ -12,6 +12,7 @@ body {
   justify-content: center;
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
+  position: relative;
 }
 
 .app {
@@ -22,6 +23,8 @@ body {
   background-color: darkslategrey;
   padding-left: 2%;
   padding-right: 2%;
+  position: sticky;
+  top: 0;
 
 }
 
@@ -78,11 +81,12 @@ body {
   height: 20vh;
   margin-top: 2%;
   resize: none;
+
 }
 
 #actions__btn {
   margin-top: 2%;
-  width: 5.5em;
+  width: 6.5em;
   height: 2.5em;
   color: #202122;
   background: #d2d6db;
@@ -130,14 +134,10 @@ body {
 
 .note__description {
   font-family: sans-serif;
-  /* font-size: 14px; */
   color: rgb(102, 102, 102);
-  /* white-space: normal;
-  line-height: 1.5;
-  display: flex;
-  justify-content: center; */
   margin-left: 1%;
   margin-right: 1%;
+
 }
 
 .note__actions {
@@ -163,4 +163,45 @@ body {
 
 .note__btn--delete {
   background-color: red;
+}
+
+
+@media only screen and (max-width: 600px) {
+  
+  .app {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .app__title {
+
+    font-size: 1em;
+  }
+  .container {
+    margin-top: 5%;
+  }
+
+  .note-list__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 2%;
+  }
+
+  .note {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+    background: #fff;
+  
+    width: 100%;
+    border-radius: 5%;
+    margin: 1%;
+    height: fit-content;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 10px;
+    transition: box-shadow 0.2s ease 0s;
+  }
+  
+
 }
