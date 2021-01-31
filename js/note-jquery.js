@@ -1,5 +1,6 @@
 $(document).ready(function(){
-  // $(".note").click(function(){
-  //   $(".note__description__wrapper").animate({height: "300px"});
-  // });
+
+  $(".note__title").click(function (){
+    $(".note__description__wrapper").toggle(2000);
+  });
   });

@@ -71,7 +71,7 @@ function showNoteList() {
         <div class="note__description__wrapper" >
         <div class="note__description">${element.noteDescription}</div>
         <div class="note__actions">
-          <button id="${index}" class="note__btn note__btn--edit" onclick='editNote(this.id)'>Edit</button> 
+          <button id="${index}" class="note__btn note__btn--update" onclick='updateNote(this.id)'>Update</button> 
           <button id="${index}" class="note__btn note__btn--delete" onclick="deleteNote(this.id)">Delete</button> 
         </div>
         </div>
@@ -87,11 +87,16 @@ function showNoteList() {
   }
 }
 
-function expand(index) {
-  console.log("index", index);
-}
 
-function editNote(index) {
+
+// function toggleNote(index) {
+//   console.log("index", index);
+ 
+//   $(`.note__description__wrapper`).toggle(2000);
+
+// }
+
+function updateNote(index) {
   let notes = localStorage.getItem("notes");
   if (notes == null) {
     notesObj = [];
@@ -120,7 +125,7 @@ function deleteNote(noteId) {
 }
 
 let searchEle = document.querySelector(".search__box");
-let searchBtn = document.querySelector(".search__btn");
+// let searchBtn = document.querySelector(".search__btn");
 searchEle.addEventListener("input", () => {
   let searchItem = searchEle.value.toLowerCase();
 
@@ -136,14 +141,14 @@ searchEle.addEventListener("input", () => {
   });
 });
 
-function searchNote(searchItem) {
-  if (notesObj.length === 0) {
-    console.log("no item to search");
-  } else {
-    let filteredNotes = notesObj.filter((item) => {
-      if (item.noteTitle === searchItem) return item;
-      else return;
-    });
-    console.log("filtered Notes", filteredNotes);
-  }
-}
+// function searchNote(searchItem) {
+//   if (notesObj.length === 0) {
+//     console.log("no item to search");
+//   } else {
+//     let filteredNotes = notesObj.filter((item) => {
+//       if (item.noteTitle === searchItem) return item;
+//       else return;
+//     });
+//     console.log("filtered Notes", filteredNotes);
+//   }
+// }
